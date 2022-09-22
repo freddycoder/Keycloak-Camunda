@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: camunda-service
+  labels:
+    app: camunda
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 32001
+  selector:
+    app: camunda
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: camunda
+  labels:
+    app: camunda
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: camunda
+  template:
+    metadata:
+      labels:
+        app: camunda
+    spec:
+      containers:
+      - name: camunda
+        image: camunda/camunda-bpm-platform:latest
+        ports:
+        - name: http
+          containerPort: 8080

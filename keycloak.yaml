@@ -1,0 +1,55 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: keycloak-service
+  labels:
+    app: keycloak
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 32000
+  selector:
+    app: keycloak
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+  labels:
+    app: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+      - name: keycloak
+        image: bitnami/keycloak:latest
+        env:
+        - name: KEYCLOAK_ADMIN
+          value: "admin"
+        - name: KEYCLOAK_ADMIN_PASSWORD
+          value: "admin"
+        - name: DB_VENDOR
+          value: POSTGRES
+        - name: DB_ADDR
+          value: postgres-service
+        - name: DB_DATABASE
+          value: keycloak
+        - name: DB_USER
+          value: mendix
+        - name: DB_PASSWORD
+          value: mendix
+        ports:
+        - name: http
+          containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /realms/master
+            port: 8080
