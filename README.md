@@ -9,5 +9,5 @@ A repos to experiment with Keycloak and Camunda in Kubernetes
 
 ## Links
 
-Keycloak: http://localhost:32000
-Camunda: http://localhost:32001/camunda-welcome/
+- Keycloak: http://localhost:32000
+- Camunda: http://localhost:32001/camunda-welcome/
