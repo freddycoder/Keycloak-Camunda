@@ -1,34 +1,34 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: postgres-service
+  name: postgres-keycloak-service
   labels:
-    app: postgres
+    app: postgres-keycloak
 spec:
   type: ClusterIP
   ports:
   - port: 5432
   selector:
-    app: postgres
+    app: postgres-keycloak
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: postgres-keycloak
   labels:
-    app: postgres
+    app: postgres-keycloak
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postgres
+      app: postgres-keycloak
   template:
     metadata:
       labels:
-        app: postgres
+        app: postgres-keycloak
     spec:
       containers:
-        - name: postgres
+        - name: postgres-keycloak
           image: postgres
           ports:
             - containerPort: 5432

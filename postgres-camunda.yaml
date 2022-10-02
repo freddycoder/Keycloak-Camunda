@@ -1,0 +1,50 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres-camunda-service
+  labels:
+    app: postgres-camunda
+spec:
+  type: NodePort
+  ports:
+  - port: 5432
+    nodePort: 32432
+  selector:
+    app: postgres-camunda
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-camunda
+  labels:
+    app: postgres-camunda
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-camunda
+  minReadySeconds: 60
+  template:
+    metadata:
+      labels:
+        app: postgres-camunda
+    spec:
+      containers:
+        - name: postgres-camunda
+          image: postgres
+          ports:
+            - containerPort: 5432
+          env:
+          - name: POSTGRES_DB
+            value: camunda
+          - name: POSTGRES_USER
+            value: camunda
+          - name: POSTGRES_PASSWORD
+            value: camunda1!
+          - name: POSTGRES_ROLE
+            value: camunda
+          readinessProbe:
+            tcpSocket:
+              port: 5432
+            initialDelaySeconds: 45
+            periodSeconds: 5

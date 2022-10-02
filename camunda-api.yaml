@@ -1,0 +1,70 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: camunda-api-service
+  labels:
+    app: camunda-api
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 32002
+  selector:
+    app: camunda-api
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: camunda-api
+  labels:
+    app: camunda-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: camunda-api
+  template:
+    metadata:
+      labels:
+        app: camunda-api
+    spec:
+      containers:
+      - name: camunda-api
+        image: erabliereapi/camunda-keycloak:latest
+        ports:
+        - name: http
+          containerPort: 8080
+        env:
+        - name: JDBC_URL
+          value: jdbc:postgresql://postgres-camunda-service:5432/camunda
+        - name: JDBC_USER
+          value: camunda
+        - name: JDBC_PASSWORD
+          value: camunda1!
+        - name: KEYCLOAK_HOST
+          value: http://keycloak-service:8080
+        - name: KEYCLOAK_REALM
+          value: camunda
+        - name: KEYCLOAK_CLIENT_ID
+          value: camunda-identity-service
+        - name: KEYCLOAK_CLIENT_SECRET
+          value: f9eZkjGqpqu2vden29sLumG8DYx3uAbO
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 15
+          failureThreshold: 4
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          failureThreshold: 12
+        imagePullPolicy: Always
+      initContainers:
+      - name: init-camunda-app
+        image: busybox:1.28
+        command: ['sh', '-c', "until nc -z -w 2 camunda-app-service:8080; do echo waiting for keycloak; sleep 5; done"]

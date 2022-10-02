@@ -7,8 +7,12 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 8080
+  - name: http
+    port: 8080
     nodePort: 32000
+  - name: https
+    port: 8443
+    nodePort: 32043
   selector:
     app: keycloak
 ---
@@ -32,6 +36,8 @@ spec:
       - name: keycloak
         image: bitnami/keycloak:latest
         env:
+        - name: KC_LOGLEVEL
+          value: DEBUG
         - name: KEYCLOAK_ADMIN
           value: "admin"
         - name: KEYCLOAK_ADMIN_PASSWORD
@@ -39,7 +45,7 @@ spec:
         - name: DB_VENDOR
           value: POSTGRES
         - name: DB_ADDR
-          value: postgres-service
+          value: postgres-keycloak-service
         - name: DB_DATABASE
           value: keycloak
         - name: DB_USER
@@ -49,7 +55,13 @@ spec:
         ports:
         - name: http
           containerPort: 8080
+        - name: https
+          containerPort: 8443
         readinessProbe:
           httpGet:
-            path: /realms/master
+            path: /
             port: 8080
+      initContainers:
+      - name: init-postgres-keycloak
+        image: busybox:1.28
+        command: ['sh', '-c', "until nc -z -w 2 postgres-keycloak-service:5432; do echo waiting for postgres; sleep 5; done"]
