@@ -70,10 +70,10 @@ logging:
 # https://docs.camunda.org/manual/latest/user-guide/camunda-bpm-run/#connect-to-a-database
 # https://docs.camunda.org/manual/latest/user-guide/camunda-bpm-run/#database
 spring.datasource:
-  url: jdbc:h2:./camunda-h2-test-production/process-engine;TRACE_LEVEL_FILE=0;DB_CLOSE_ON_EXIT=FALSE
-  driver-class-name: org.h2.Driver
-  username: sa
-  password: sa
+  url: ${JDBC_URL}
+  driver-class-name: org.postgresql.Driver
+  username: ${JDBC_USER}
+  password: ${JDBC_PASSWORD}
 
 # Camunda Keycloak Identity Provider Plugin
 # Externalized Keycloak configuration
