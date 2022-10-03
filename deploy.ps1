@@ -21,9 +21,9 @@ if ($buildCamunda) {
     }
 }
 
-kubectl apply -f .\namespace.yaml
-kubectl apply -f .\postgres-keycloak.yaml -n $namespace
-kubectl apply -f .\postgres-camunda.yaml -n $namespace
-kubectl apply -f .\keycloak.yaml -n $namespace
-kubectl apply -f .\camunda-app.yaml -n $namespace
-kubectl apply -f .\camunda-api.yaml -n $namespace
+kubectl apply -f .\k8s\namespace.yaml
+kubectl apply -f .\k8s\postgres-keycloak.yaml -n $namespace
+kubectl apply -f .\k8s\postgres-camunda.yaml -n $namespace
+kubectl apply -f .\k8s\keycloak.yaml -n $namespace
+kubectl apply -f .\k8s\camunda-app.yaml -n $namespace
+kubectl apply -f .\k8s\camunda-api.yaml -n $namespace
