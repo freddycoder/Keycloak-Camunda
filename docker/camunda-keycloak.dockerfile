@@ -1,11 +1,15 @@
 # Get Camunda-run as base image
-FROM camunda/camunda-bpm-platform:run-7.17.0
+FROM camunda/camunda-bpm-platform:run-7.18.0
 
 # The Version of the Keycloak Identity Provider to use
 ENV IDENTITY_PROVIDER_VERSION=7.17.0
 
 # COPY the camunda-keycloak yml file to the camunda conf folder
 COPY config/camunda-keycloak/. /camunda/configuration
+
+# COPY the camunda.sh script
+ENV ADDITIONAL_CMD_LINE_ARGS=
+COPY --chown=camunda:camunda ./camunda.sh /camunda/camunda.sh
 
 # Add Keycloak Identity Provider
 USER camunda

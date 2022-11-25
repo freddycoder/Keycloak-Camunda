@@ -7,7 +7,7 @@ param(
 
 if (-not $skipPull) {
     docker pull bitnami/keycloak:latest
-    docker pull camunda/camunda-bpm-platform:run-7.17.0
+    docker pull camunda/camunda-bpm-platform:run-7.18.0
     docker pull postgres:latest
     docker pull erabliereapi/camunda-keycloak:latest
     docker pull busybox:1.28
