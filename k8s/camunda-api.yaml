@@ -35,6 +35,8 @@ spec:
         - name: http
           containerPort: 8080
         env:
+        - name: ADDITIONAL_CMD_LINE_ARGS
+          value: "--rest"
         - name: JDBC_URL
           value: jdbc:postgresql://postgres-camunda-service:5432/camunda
         - name: JDBC_USER
@@ -51,14 +53,14 @@ spec:
           value: f9eZkjGqpqu2vden29sLumG8DYx3uAbO
         livenessProbe:
           httpGet:
-            path: /
+            path: /engine-rest/engine
             port: 8080
           initialDelaySeconds: 60
           periodSeconds: 15
           failureThreshold: 4
         readinessProbe:
           httpGet:
-            path: /
+            path: /engine-rest/engine
             port: 8080
           initialDelaySeconds: 30
           periodSeconds: 5
