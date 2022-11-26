@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1u95jcy" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.3.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
+  <bpmn:collaboration id="Collaboration_1kzi11v">
+    <bpmn:participant id="Participant_0ar4vkx" name="Remote HTTP Cal" />
+    <bpmn:participant id="Participant_0unwvba" name="ErabliereAPI Product Management" processRef="Process_06ij0ns" />
+    <bpmn:messageFlow id="Flow_0g2bin0" sourceRef="Participant_0ar4vkx" targetRef="Event_1bwjclv" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_06ij0ns" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1ufmnrl">
+      <bpmn:lane id="Lane_137fnzo" name="Camunda WebAPI">
+        <bpmn:flowNodeRef>Event_1bwjclv</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_1qw7il3" name="Humain worker">
+        <bpmn:flowNodeRef>Activity_0qs5f93</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_01csijq</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Event_1bwjclv">
+      <bpmn:outgoing>Flow_1062bpn</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1q9mihb" />
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_0qs5f93" name="Create Product">
+      <bpmn:incoming>Flow_1062bpn</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xeayp4</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_01csijq">
+      <bpmn:incoming>Flow_1xeayp4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1062bpn" sourceRef="Event_1bwjclv" targetRef="Activity_0qs5f93" />
+    <bpmn:sequenceFlow id="Flow_1xeayp4" sourceRef="Activity_0qs5f93" targetRef="Event_01csijq" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1kzi11v">
+      <bpmndi:BPMNShape id="Participant_0ro95wh_di" bpmnElement="Participant_0ar4vkx" isHorizontal="true">
+        <dc:Bounds x="260" y="70" width="390" height="60" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_0unwvba_di" bpmnElement="Participant_0unwvba" isHorizontal="true">
+        <dc:Bounds x="155" y="220" width="600" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_137fnzo_di" bpmnElement="Lane_137fnzo" isHorizontal="true">
+        <dc:Bounds x="185" y="220" width="570" height="125" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1qw7il3_di" bpmnElement="Lane_1qw7il3" isHorizontal="true">
+        <dc:Bounds x="185" y="345" width="570" height="125" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0kza591_di" bpmnElement="Event_1bwjclv">
+        <dc:Bounds x="252" y="262" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1adtj90_di" bpmnElement="Activity_0qs5f93">
+        <dc:Bounds x="400" y="360" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_01csijq_di" bpmnElement="Event_01csijq">
+        <dc:Bounds x="622" y="382" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1062bpn_di" bpmnElement="Flow_1062bpn">
+        <di:waypoint x="288" y="280" />
+        <di:waypoint x="344" y="280" />
+        <di:waypoint x="344" y="400" />
+        <di:waypoint x="400" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xeayp4_di" bpmnElement="Flow_1xeayp4">
+        <di:waypoint x="500" y="400" />
+        <di:waypoint x="622" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0g2bin0_di" bpmnElement="Flow_0g2bin0">
+        <di:waypoint x="270" y="130" />
+        <di:waypoint x="270" y="262" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
