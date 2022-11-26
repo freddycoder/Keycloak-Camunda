@@ -1,5 +1,6 @@
 # Get Camunda-run as base image
-FROM camunda/camunda-bpm-platform:run-7.18.0
+ARG CAMUNDA_BASE_IMG=camunda/camunda-bpm-platform:run-7.18.0
+FROM $CAMUNDA_BASE_IMG
 
 # The Version of the Keycloak Identity Provider to use
 ENV IDENTITY_PROVIDER_VERSION=7.17.0
