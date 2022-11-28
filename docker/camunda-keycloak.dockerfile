@@ -11,6 +11,7 @@ COPY config/camunda-keycloak/. /camunda/configuration
 # COPY the camunda.sh script
 ENV ADDITIONAL_CMD_LINE_ARGS=
 COPY --chown=camunda:camunda ./camunda.sh /camunda/camunda.sh
+COPY --chown=camunda:camunda  ./run.sh /camunda/internal/run.sh
 
 # Add Keycloak Identity Provider
 USER camunda

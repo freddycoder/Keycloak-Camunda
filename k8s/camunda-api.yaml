@@ -7,7 +7,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 8080
+  - name: http
+    port: 8080
     nodePort: 32002
   selector:
     app: camunda-api
@@ -36,7 +37,7 @@ spec:
           containerPort: 8080
         env:
         - name: ADDITIONAL_CMD_LINE_ARGS
-          value: "--rest"
+          value: "--rest --production"
         - name: JDBC_URL
           value: jdbc:postgresql://postgres-camunda-service:5432/camunda
         - name: JDBC_USER

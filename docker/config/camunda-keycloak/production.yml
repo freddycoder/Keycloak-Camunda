@@ -42,16 +42,16 @@ camunda.bpm:
 # https://docs.camunda.org/manual/latest/user-guide/camunda-bpm-run/#authentication
     auth.enabled: true
 
-server:
-# https://docs.camunda.org/manual/latest/user-guide/camunda-bpm-run/#https
-# do not use the provided certificate in production
-  ssl:
-    key-store: classpath:keystore.p12
-    key-store-password: camunda
-    key-store-type: pkcs12
-    key-alias: camunda
-    key-password: camunda
-  port: 8443
+# server:
+# # https://docs.camunda.org/manual/latest/user-guide/camunda-bpm-run/#https
+# # do not use the provided certificate in production
+#   ssl:
+#     key-store: classpath:keystore.p12
+#     key-store-password: camunda
+#     key-store-type: pkcs12
+#     key-alias: camunda
+#     key-password: camunda
+#   port: 8443
 
 # https://docs.camunda.org/manual/latest/user-guide/security/#http-header-security-in-webapps
 # https://docs.camunda.org/manual/latest/webapps/shared-options/header-security/
@@ -86,8 +86,8 @@ keycloak:
   client.secret: ${KEYCLOAK_CLIENT_SECRET}
 
 plugin.identity.keycloak:
-  keycloakIssuerUrl: ${keycloak.host}/auth/realms/${keycloak.realm}
-  keycloakAdminUrl: ${keycloak.host}/auth/admin/realms/${keycloak.realm}
+  keycloakIssuerUrl: ${keycloak.host}/realms/${keycloak.realm}
+  keycloakAdminUrl: ${keycloak.host}/admin/realms/${keycloak.realm}
   clientId: ${keycloak.client.id}
   clientSecret: ${keycloak.client.secret}
   useEmailAsCamundaUserId: false

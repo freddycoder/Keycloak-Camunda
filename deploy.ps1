@@ -2,7 +2,8 @@ param(
     [bool]$skipPull,
     [bool]$buildCamunda,
     [bool]$pushCamunda,
-    [string]$namespace = "keycloak-camunda"
+    [string]$namespace = "keycloak-camunda",
+    [bool]$restartCamunda
 )
 
 $camudaBaseImg = "camunda/camunda-bpm-platform:run-7.18.0"
@@ -32,3 +33,8 @@ kubectl apply -f .\k8s\postgres-camunda.yaml -n $namespace
 kubectl apply -f .\k8s\keycloak.yaml -n $namespace
 kubectl apply -f .\k8s\camunda-app.yaml -n $namespace
 kubectl apply -f .\k8s\camunda-api.yaml -n $namespace
+
+if ($restartCamunda) {
+    kubectl rollout restart deployment/camunda-app -n $namespace
+    kubectl rollout restart deployment/camunda-api -n $namespace
+}
