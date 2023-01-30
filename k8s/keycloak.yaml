@@ -36,7 +36,8 @@ spec:
       - name: keycloak
         image: bitnami/keycloak:latest
         env:
-        - name: KC_LOGLEVEL
+        - name: KEYCLOAK_PRODUCTION
+          value: "true"
           value: DEBUG
         - name: KEYCLOAK_ADMIN
           value: "admin"

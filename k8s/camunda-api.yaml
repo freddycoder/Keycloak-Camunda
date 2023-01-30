@@ -37,7 +37,7 @@ spec:
           containerPort: 8080
         env:
         - name: ADDITIONAL_CMD_LINE_ARGS
-          value: "--rest --production"
+          value: "--rest"
         - name: JDBC_URL
           value: jdbc:postgresql://postgres-camunda-service:5432/camunda
         - name: JDBC_USER
