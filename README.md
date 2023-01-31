@@ -14,11 +14,9 @@ A repos to experiment with Keycloak and Camunda in Kubernetes
 
 ## Manuel instruction
 
-Once the deployment is done, you need to manually import the realm file `realm-export.json` into Keycloak.
+Once the deployment is done, you need to create a user inside the camunda realm inside keycloak, give it a password and add it to the `camunda-admin` group.
 
-Then you need to create a user, give it a password and add it to the `camunda-admin` group.
-
-The last manuel step is to create a deployment using postman and the product_management.bpmn file.
+The last manuel step is to create a deployment if the the product_management.bpmn file inside camunda.
 
 You can use this postman collection in this repos to do so.
 
