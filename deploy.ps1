@@ -37,8 +37,8 @@ kubectl apply -f .\k8s\postgres-camunda.yaml -n $namespace
 
 # deploy keycloak
 python .\remove_id_from_keycloak_export.py .\realm-export.json .\realm-export-edit.json
-kubectl delete configmap keycloak-config-cli-import -n $namespace
-kubectl create configmap keycloak-config-cli-import --from-file=./realm-export-edit.json -n $namespace
+kubectl delete secret keycloak-config-cli-import -n $namespace
+kubectl create secret generic keycloak-config-cli-import --from-file=import.json=.\realm-export-edit.json -n $namespace
 if (-not $skipPull) {
     helm repo add bitnami https://charts.bitnami.com/bitnami
     helm repo update

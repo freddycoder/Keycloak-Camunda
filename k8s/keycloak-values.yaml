@@ -1,6 +1,9 @@
 auth:
   adminUser: admin
   adminPassword: admin
+logging:
+  output: json
+  level: INFO
 externalDatabase:
   host: postgres-keycloak-service
   port: 5432
@@ -29,8 +32,8 @@ keycloakConfigCli:
     mountPath: /opt/bitnami/keycloak/imports
   extraVolumes:
   - name: keycloak-imports
-    configMap:
-      name: keycloak-config-cli-import
+    secret:
+      secretName: keycloak-config-cli-import
   initContainers:
   - name: init-keycloak
     image: busybox:1.28
