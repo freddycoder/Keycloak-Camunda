@@ -23,9 +23,6 @@ keycloakConfigCli:
   - java
   - -jar
   - /opt/bitnami/keycloak-config-cli/keycloak-config-cli.jar
-  - --keycloak.url=http://keycloak:8080
-  - --keycloak.user=admin
-  - --keycloak.password=admin
   - --import.files.locations=/opt/bitnami/keycloak/imports/*.json
   extraVolumeMounts:
   - name: keycloak-imports
