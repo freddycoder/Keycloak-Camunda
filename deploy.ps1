@@ -36,12 +36,23 @@ kubectl apply -f .\k8s\postgres-keycloak.yaml -n $namespace
 kubectl apply -f .\k8s\postgres-camunda.yaml -n $namespace
 
 # deploy keycloak
-# create the keycloak configmap from realm-export.json
 python .\remove_id_from_keycloak_export.py .\realm-export.json .\realm-export-edit.json
 kubectl delete configmap keycloak-config-cli-import -n $namespace
 kubectl create configmap keycloak-config-cli-import --from-file=./realm-export-edit.json -n $namespace
-kubectl apply -f .\k8s\keycloak.yaml -n $namespace
-kubectl apply -f .\k8s\keycloak-config-cli.yaml -n $namespace
+if (-not $skipPull) {
+    helm repo add bitnami https://charts.bitnami.com/bitnami
+    helm repo update
+}
+# check if the release already exists
+$release = helm list -n $namespace | Select-String "keycloak"
+Write-Output "Release: $release"
+if ($release) {
+    Write-Output "Upgrading keycloak"
+    helm upgrade keycloak bitnami/keycloak -n $namespace -f k8s/keycloak-values.yaml
+} else {
+    Write-Output "Installing keycloak"
+    helm install keycloak bitnami/keycloak -n $namespace -f k8s/keycloak-values.yaml
+}
 
 # deploy camunda
 kubectl apply -f .\k8s\camunda-app.yaml -n $namespace

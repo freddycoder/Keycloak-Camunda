@@ -45,7 +45,7 @@ spec:
         - name: JDBC_PASSWORD
           value: camunda1!
         - name: KEYCLOAK_HOST
-          value: http://keycloak-service:8080
+          value: http://keycloak:8080
         - name: KEYCLOAK_REALM
           value: camunda
         - name: KEYCLOAK_CLIENT_ID

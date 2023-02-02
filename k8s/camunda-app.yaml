@@ -45,7 +45,7 @@ spec:
         - name: JDBC_PASSWORD
           value: camunda1!
         - name: KEYCLOAK_HOST
-          value: http://keycloak-service:8080
+          value: http://keycloak:8080
         - name: KEYCLOAK_REALM
           value: camunda
         - name: KEYCLOAK_CLIENT_ID
@@ -70,7 +70,7 @@ spec:
       initContainers:
       - name: init-keycloak
         image: busybox:1.28
-        command: ['sh', '-c', "until nc -z -w 2 keycloak-service:8080; do echo waiting for keycloak; sleep 5; done"]
+        command: ['sh', '-c', "until nc -z -w 2 keycloak:8080; do echo waiting for keycloak; sleep 5; done"]
       - name: init-postgres-postgres
         image: busybox:1.28
         command: ['sh', '-c', "until nc -z -w 2 postgres-camunda-service:5432; do echo waiting for postgres; sleep 5; done"]
