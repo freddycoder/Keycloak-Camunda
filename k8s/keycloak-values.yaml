@@ -27,6 +27,10 @@ keycloakConfigCli:
   - -jar
   - /opt/bitnami/keycloak-config-cli/keycloak-config-cli.jar
   - --import.files.locations=/opt/bitnami/keycloak/imports/*.json
+  - --import.var-substitution.enabled=true
+  extraEnvVars:
+  - name: CAMUNDA_KEYCLOAK_CLIENT_SECRET
+    value: $camundaKeycloakClientSecret
   extraVolumeMounts:
   - name: keycloak-imports
     mountPath: /opt/bitnami/keycloak/imports

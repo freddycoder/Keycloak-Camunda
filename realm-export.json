@@ -796,7 +796,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "f9eZkjGqpqu2vden29sLumG8DYx3uAbO",
+      "secret": "$(env:CAMUNDA_KEYCLOAK_CLIENT_SECRET)",
       "redirectUris": [
         "http://localhost:8080/camunda/*",
         "/camunda/*"
