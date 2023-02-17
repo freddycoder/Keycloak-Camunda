@@ -1,0 +1,11 @@
+camunda:
+  url: http://localhost:32002/engine-rest
+  emailSubscriberTopic: sendEmailSummary
+
+aws_ses:
+  region: ca-central-1
+  useCredentials: 'false'
+  accessKeyId: ''
+  secretAccessKey: ''
+  from: ''
+  to: ''
