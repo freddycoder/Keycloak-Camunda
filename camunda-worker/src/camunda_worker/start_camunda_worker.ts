@@ -9,7 +9,7 @@ export const startCamundaWorker = (app: INestApplication) => {
     // configuration for the Client:
     //  - 'baseUrl': url to the Process Engine
     //  - 'logger': utility to automatically log important events
-    const config = { baseUrl: "http://localhost:32002/engine-rest", use: logger };
+    const config = { baseUrl: camundaWorkerConfig.get('camunda.url'), use: logger };
 
     // create a Client instance with custom configuration
     const client = new Client(config);
