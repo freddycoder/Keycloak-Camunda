@@ -12,14 +12,16 @@ export default () => {
 
   Logger.verbose(JSON.stringify(config))
 
+  const seperator = process.env.ENV_VAR_SEPERATOR ?? '.';
+
   // Override config with environment variables
   // First get the first level of preperty in the config
   // Then get the second level of properties in the config and override with environment variables
   for (const prop in config) {
     const levelTwo = config[prop];
     for (const prop2 in levelTwo) {
-      Logger.verbose(`Checking for environment variable ${prop}.${prop2}`)
-      const envVar = process.env[prop + '.' + prop2];
+      Logger.verbose(`Checking for environment variable ${prop}${seperator}${prop2}`)
+      const envVar = process.env[prop + seperator + prop2];
       if (envVar) {
         Logger.log(
           `Overriding config value ${prop}.${prop2} with environment variable ${envVar}`,
