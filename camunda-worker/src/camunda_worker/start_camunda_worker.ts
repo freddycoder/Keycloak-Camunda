@@ -40,8 +40,8 @@ async function sendEmailSummary(config: ConfigService) {
         })
 
         await client.send(createSendEmailCommand(
+            config.get("aws_ses.to") ?? "",
             config.get("aws_ses.from") ?? "", 
-            config.get("aws_ses.to") ?? ""
             )
         )
     }
@@ -53,7 +53,7 @@ async function sendEmailSummary(config: ConfigService) {
 const createSendEmailCommand = (toAddresses: string, fromAddress: string) => {
     return new SendEmailCommand({
         Destination: {
-            ToAddresses: [toAddresses]
+            ToAddresses: toAddresses.split(';')
         },
         Message: {
             Body: {
