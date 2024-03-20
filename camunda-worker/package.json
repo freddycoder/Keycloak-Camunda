@@ -23,7 +23,7 @@
   "dependencies": {
     "@aws-sdk/client-ses": "^3.267.0",
     "@nestjs/common": "^9.0.0",
-    "@nestjs/config": "^2.2.0",
+    "@nestjs/config": "^3.2.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "camunda-external-task-client-js": "^2.3.1",
