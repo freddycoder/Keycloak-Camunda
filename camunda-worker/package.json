@@ -21,7 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "^3.523.0",
+    "@aws-sdk/client-ses": "^3.535.0",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
@@ -30,7 +30,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "webpack": "^5.76.0"
+    "webpack": "^5.76.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
