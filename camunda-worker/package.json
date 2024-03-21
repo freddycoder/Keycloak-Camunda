@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^10.3.4",
-    "@aws-sdk/client-ses": "^3.523.0",
+    "@aws-sdk/client-ses": "^3.535.0",
     "@nestjs/config": "^3.2.0",
     "@nestjs/core": "^10.3.4",
     "@nestjs/platform-express": "^10.3.4",
@@ -30,7 +30,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "webpack": "^5.76.0"
+    "webpack": "^5.91.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.3.2",
