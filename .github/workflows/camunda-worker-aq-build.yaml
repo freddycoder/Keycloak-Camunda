@@ -22,14 +22,9 @@ jobs:
         with:
           node-version: 20
 
-      - name: Change directory
-        run: cd camunda-worker
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build app
-        run: npm run build
-
-      - name: Run tests
-        run: npm test
+      - name: AQ-Step
+        run: |
+          cd camunda-worker
+          npm ci
+          npm run build
+          npm test
