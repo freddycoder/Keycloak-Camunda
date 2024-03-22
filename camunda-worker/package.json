@@ -27,7 +27,7 @@
     "@nestjs/core": "^10.3.4",
     "@nestjs/platform-express": "^10.3.4",
     "camunda-external-task-client-js": "^3.0.1",
-    "reflect-metadata": "^0.1.13",
+    "reflect-metadata": "^0.2.1",
     "rxjs": "^7.2.0",
     "webpack": "^5.90.3"
   },
