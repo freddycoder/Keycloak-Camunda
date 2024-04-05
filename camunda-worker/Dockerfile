@@ -1,4 +1,4 @@
-FROM node:20.12.0-alpine AS builder
+FROM node:21.6.1-alpine AS builder
 
 WORKDIR "/app"
 
@@ -10,7 +10,7 @@ RUN npm run build
 
 RUN npm prune --omit-dev
 
-FROM node:20.12.0-alpine AS production
+FROM node:21.6.1-alpine AS production
 
 WORKDIR "/app"
 
