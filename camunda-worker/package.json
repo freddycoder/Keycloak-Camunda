@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^10.3.10",
-    "@aws-sdk/client-ses": "^3.622.0",
+    "@aws-sdk/client-ses": "^3.623.0",
     "@nestjs/config": "^3.2.3",
     "@nestjs/core": "^10.3.10",
     "@nestjs/platform-express": "^10.3.10",
