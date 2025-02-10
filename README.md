@@ -7,6 +7,9 @@ A repos to experiment with Keycloak and Camunda in Kubernetes
 .\deploy.ps1
 ```
 
+> Before depoying, you may want to ensure your kubectl is pointing to the right cluster.
+> You can do so by running `kubectl config current-context`, `kubectl config get-contexts` and `kubectl config use-context <context-name>`
+
 ## Links
 
 - Keycloak: http://localhost:32000
