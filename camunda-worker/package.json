@@ -24,7 +24,7 @@
     "@aws-sdk/client-ses": "^3.744.0",
     "@nestjs/common": "^11.0.8",
     "@nestjs/config": "^4.0.0",
-    "@nestjs/core": "^11.0.8",
+    "@nestjs/core": "^11.0.9",
     "@nestjs/platform-express": "^11.0.8",
     "camunda-external-task-client-js": "^2.3.1",
     "reflect-metadata": "^0.2.2",
