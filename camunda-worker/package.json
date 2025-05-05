@@ -29,7 +29,7 @@
     "camunda-external-task-client-js": "^2.3.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
-    "webpack": "^5.98.0"
+    "webpack": "^5.99.5"
   },
   "devDependencies": {
     "@nestjs/cli": "^11.0.6",
