@@ -1,4 +1,4 @@
-FROM node:22.17.1-alpine AS builder
+FROM node:24-alpine AS builder
 
 WORKDIR "/app"
 
@@ -6,7 +6,7 @@ COPY . .
 
 RUN npm ci && npm run build && npm prune --omit-dev
 
-FROM node:22.17.1-alpine AS production
+FROM node:24-alpine AS production
 
 WORKDIR "/app"
 
