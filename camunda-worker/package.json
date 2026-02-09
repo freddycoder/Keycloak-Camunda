@@ -21,9 +21,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "^3.958.0",
+    "@aws-sdk/client-ses": "^3.974.0",
     "@nestjs/common": "^11.1.11",
-    "@nestjs/config": "^4.0.2",
+    "@nestjs/config": "^4.0.3",
     "@nestjs/core": "^11.1.11",
     "@nestjs/platform-express": "^11.1.11",
     "camunda-external-task-client-js": "^2.3.1",
