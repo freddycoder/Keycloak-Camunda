@@ -388,3 +388,5 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+camunda-worker/tsconfig.build.tsbuildinfo
